@@ -38,7 +38,8 @@ export function InstallBar({ notifyOn, onNotify }: { notifyOn: boolean; onNotify
       const perm = await Notification.requestPermission();
       if (perm !== "granted") return;
       onNotify(true);
-      new Notification("청약패스", { body: "관심 단지 접수 전에 이 기기에서 알려 드립니다. 정부 공식 앱이 아닙니다.", icon: "./icon.svg" });
+      const base = process.env.NEXT_PUBLIC_BASE_PATH || "";
+      new Notification("청약패스", { body: "관심 단지 접수 전에 이 기기에서 알려 드립니다. 정부 공식 앱이 아닙니다.", icon: `${base}/icon.svg` });
     } else {
       onNotify(false);
     }
@@ -67,7 +68,8 @@ export function InstallBar({ notifyOn, onNotify }: { notifyOn: boolean; onNotify
 export function PwaBoot() {
   useEffect(() => {
     if (!("serviceWorker" in navigator)) return;
-    navigator.serviceWorker.register("./sw.js").catch(() => undefined);
+    const base = process.env.NEXT_PUBLIC_BASE_PATH || "";
+    navigator.serviceWorker.register(`${base}/sw.js`, { scope: `${base}/` || "/" }).catch(() => undefined);
   }, []);
   return null;
 }

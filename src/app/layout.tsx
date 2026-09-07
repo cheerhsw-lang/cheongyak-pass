@@ -2,6 +2,8 @@ import { PwaBoot } from "@/components/InstallBar";
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 export const metadata: Metadata = {
   title: "청약패스 | 주택청약 성공 계산기",
   description:
@@ -16,7 +18,8 @@ export const metadata: Metadata = {
     type: "website",
   },
   robots: { index: true, follow: true },
-  icons: { icon: "/icon.svg" },
+  icons: { icon: `${BASE}/icon.svg` },
+  manifest: `${BASE}/manifest.webmanifest`,
 };
 
 export const viewport: Viewport = {
@@ -34,10 +37,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
         />
-        <link rel="manifest" href="/manifest.webmanifest" />
+        <link rel="manifest" href={`${BASE}/manifest.webmanifest`} />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-title" content="청약패스" />
-        <link rel="apple-touch-icon" href="/icon.svg" />
+        <link rel="apple-touch-icon" href={`${BASE}/icon.svg`} />
       </head>
       <body>
         <a className="skip-link" href="#main">
