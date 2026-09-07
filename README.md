@@ -2,6 +2,9 @@
 
 로그인 없이 바로 쓰는 **민간 참고 계산기**입니다. 민영주택 가점(84점), 지역별 예치금, 공공분양 월 납입 도달 기간을 이 기기에서만 계산·저장합니다.
 
+- 실행 주소: https://cheerhsw-lang.github.io/cheongyak-pass/
+- 소스: https://github.com/cheerhsw-lang/cheongyak-pass
+
 > 정부, 한국부동산원, 청약홈 공식 서비스가 아닙니다. 결과는 법적 효력이 없습니다. 실제 청약은 [청약홈](https://www.applyhome.co.kr) 공고문을 확인하세요.
 
 ## 공익 목적
