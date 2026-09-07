@@ -18,10 +18,10 @@ export function Footer() {
           <a className="underline decoration-[var(--brass-2)]" href={OFFICIAL_LINKS.law} target="_blank" rel="noopener noreferrer">
             주택공급에 관한 규칙
           </a>
-          <Link className="underline decoration-[var(--brass-2)]" href="/legal">
+          <Link className="underline decoration-[var(--brass-2)]" href="/legal/">
             저작권·개인정보·면책
           </Link>
-          <Link className="underline decoration-[var(--brass-2)]" href="/guide">
+          <Link className="underline decoration-[var(--brass-2)]" href="/guide/">
             계산 근거
           </Link>
         </div>

@@ -33,10 +33,10 @@ export function Header({
           <Link className="touch rounded-2xl px-3 py-2 hover:bg-white/70" href="/#notice">
             공고안내
           </Link>
-          <Link className="touch rounded-2xl px-3 py-2 hover:bg-white/70" href="/guide">
+          <Link className="touch rounded-2xl px-3 py-2 hover:bg-white/70" href="/guide/">
             이용안내
           </Link>
-          <Link className="touch rounded-2xl px-3 py-2 hover:bg-white/70" href="/legal">
+          <Link className="touch rounded-2xl px-3 py-2 hover:bg-white/70" href="/legal/">
             저작권·면책
           </Link>
           <a
