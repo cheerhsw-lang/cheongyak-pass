@@ -1,0 +1,13 @@
+{
+  "name": "청약패스 - 주택청약 성공 계산기",
+  "short_name": "청약패스",
+  "description": "민간 주택청약 참고 계산기. 로그인 없음, 이 기기에만 저장.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f2ebe0",
+  "theme_color": "#1b1914",
+  "lang": "ko",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "name": "cheongyak-pass",
+  "version": "1.0.0",
+  "private": true,
+  "description": "청약패스 — 민간 주택청약 가점·예치금·공공분양 납입 참고 계산기. 로그인 없음, 데이터는 이 기기에만 저장.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "npx --yes serve out -p 3000",
+    "test": "npx --yes tsx src/lib/engine.test.ts"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "next": "^15.5.25",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "^26.4.1",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^5.9.2"
+  }
+}
