@@ -99,6 +99,19 @@ export function regionGroup(region: string): "seoul" | "metro" | "etc" {
   return "etc";
 }
 
+export function matchesMyRegion(region: string, prefer: "seoul" | "metro" | "etc" | "all"): boolean {
+  if (prefer === "all") return true;
+  return regionGroup(region) === prefer;
+}
+
+export function noticeHint(opts: { firstRankLikely: boolean; danghaeLikely: boolean; deposit85: boolean; remainder: boolean }): string {
+  if (opts.remainder) return "무순위·잔여는 통장 요건이 단지마다 다릅니다. 공고문을 확인하세요.";
+  if (!opts.deposit85) return "예치금이 85㎡ 기준에 못 미치면 해당 면적 민영 1순위가 어려울 수 있습니다.";
+  if (!opts.firstRankLikely) return "1순위 참고 요건이 부족하면 이 공고도 2순위·특별공급·추첨만 해당될 수 있습니다.";
+  if (!opts.danghaeLikely) return "당해 거주가 짧으면 기타 지역 물량 위주로 보세요.";
+  return "내 예치·1순위 참고 요건과 맞는 편입니다. 그래도 공고문이 최종입니다.";
+}
+
 export function receiptStatus(start: string, end: string, now = new Date()): "upcoming" | "open" | "closed" | "unknown" {
   if (!start || !end) return "unknown";
   const s = new Date(start);

@@ -1,0 +1,8 @@
+{
+  "appId": "com.cheongyak.pass",
+  "appName": "청약패스",
+  "webDir": "out",
+  "server": {
+    "androidScheme": "https"
+  }
+}

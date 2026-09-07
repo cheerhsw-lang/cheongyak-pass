@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">청약패스</string>
+    <string name="title_activity_main">청약패스</string>
+    <string name="package_name">com.cheongyak.pass</string>
+    <string name="custom_url_scheme">com.cheongyak.pass</string>
+</resources>

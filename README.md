@@ -1,6 +1,6 @@
 # 청약패스 — 주택청약 성공 계산기
 
-로그인 없이 바로 쓰는 **민간 참고 계산기**입니다. 민영주택 가점(84점), 지역별 예치금, 공공분양 월 납입 도달 기간을 이 기기에서만 계산·저장합니다.
+로그인 없이 바로 쓰는 **민간 참고 계산기**입니다. 민영 1·2순위와 가점(84점), 가족 구성 마법사, 공공분양 월 납입, 관심 단지 D-Day를 이 기기에서만 계산·저장합니다. 휴대폰 브라우저에서 **홈 화면에 추가**하면 앱처럼 남습니다.
 
 - 실행 주소: https://cheerhsw-lang.github.io/cheongyak-pass/
 - 소스: https://github.com/cheerhsw-lang/cheongyak-pass
@@ -34,3 +34,16 @@ npm run dev
 ## 배포
 
 GitHub Pages 정적 내보내기를 사용합니다. `GITHUB_PAGES=true` 이면 경로 접두사 `/cheongyak-pass` 가 붙습니다.
+
+안드로이드 래핑(Capacitor):
+
+```bash
+npm install @capacitor/core @capacitor/cli @capacitor/android
+npx cap add android
+$env:GITHUB_PAGES=""; npm run build
+npx cap copy android
+npx cap open android
+```
+
+웹과 같은 계산기를 WebView로 감쌉니다. 스토어 설명 첫 줄에 민간 참고·로그인 없음·정부 공식 아님을 적으세요.
+

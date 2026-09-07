@@ -7,4 +7,12 @@ out
 .env.local
 .env*.local
 .vercel
+android/.gradle
+android/app/build
+android/build
+android/local.properties
+android/captures
+android/.idea
+android/app/src/main/assets/public
+
 tsconfig.tsbuildinfo

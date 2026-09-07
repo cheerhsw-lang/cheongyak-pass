@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { fetchNotices, loadOdcloudKey, receiptStatus, regionGroup, saveOdcloudKey, type AptNotice } from "@/lib/notices";
+import { fetchNotices, loadOdcloudKey, matchesMyRegion, receiptStatus, saveOdcloudKey, type AptNotice } from "@/lib/notices";
 import { OFFICIAL_LINKS } from "@/lib/sources";
 
 const FILTERS = [
@@ -9,16 +9,25 @@ const FILTERS = [
   { id: "seoul", label: "서울" },
   { id: "metro", label: "경기·인천" },
   { id: "etc", label: "그 외 지역" },
+  { id: "mine", label: "내 거주권" },
 ] as const;
 
-export function NoticeBoard() {
+export function NoticeBoard({
+  prefer,
+  hint,
+  onSaveSchedule,
+}: {
+  prefer: "seoul" | "metro" | "etc" | "all";
+  hint: string;
+  onSaveSchedule: (title: string, date: string) => void;
+}) {
   const [keyInput, setKeyInput] = useState("");
   const [hasKey, setHasKey] = useState(false);
   const [items, setItems] = useState<AptNotice[]>([]);
   const [remainder, setRemainder] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
-  const [filter, setFilter] = useState<(typeof FILTERS)[number]["id"]>("all");
+  const [filter, setFilter] = useState<(typeof FILTERS)[number]["id"]>("mine");
   useEffect(() => {
     const saved = loadOdcloudKey();
     if (saved) {
@@ -48,12 +57,16 @@ export function NoticeBoard() {
     }
   }
 
-  const visible = items.filter((it) => (filter === "all" ? true : regionGroup(it.region) === filter));
+  const visible = items.filter((it) => {
+    if (filter === "all") return true;
+    if (filter === "mine") return matchesMyRegion(it.region, prefer);
+    return matchesMyRegion(it.region, filter);
+  });
 
   return (
     <div className="space-y-4">
       <p className="rounded-2xl bg-[#fff7ea] p-4 text-[var(--muted)]">
-        출처: 한국부동산원 주택청약정보 (공공데이터포털 OPEN API). 이 화면의 목록은 가공된 참고용이며, 접수·당첨은 청약홈 공고문이 최종입니다.
+        출처: 한국부동산원 주택청약정보 (공공데이터포털 OPEN API). {hint}
       </p>
       <div className="flex flex-wrap gap-2">
         <a className="touch rounded-2xl bg-[var(--ink)] px-4 py-2 font-bold text-white" href={OFFICIAL_LINKS.applyHomeApt} target="_blank" rel="noopener noreferrer">
@@ -157,6 +170,15 @@ export function NoticeBoard() {
                     <a className="touch rounded-2xl bg-[var(--ink)] px-4 py-2 text-white" href={OFFICIAL_LINKS.applyHome} target="_blank" rel="noopener noreferrer">
                       청약홈에서 확인
                     </a>
+                    {it.receiptStart ? (
+                      <button
+                        type="button"
+                        className="touch rounded-2xl border border-[var(--line)] px-4 py-2"
+                        onClick={() => onSaveSchedule(it.name, it.receiptStart)}
+                      >
+                        접수일 저장
+                      </button>
+                    ) : null}
                     {it.homepage ? (
                       <a className="touch rounded-2xl border border-[var(--line)] px-4 py-2" href={it.homepage} target="_blank" rel="noopener noreferrer">
                         단지 홈페이지

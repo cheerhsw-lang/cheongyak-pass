@@ -19,6 +19,10 @@ html[data-fs="normal"] { --fs: 1; }
 html[data-fs="large"] { --fs: 1.08; }
 html[data-fs="xlarge"] { --fs: 1.18; }
 
+html {
+  scroll-padding-top: 9rem;
+}
+
 html,
 body {
   min-height: 100%;

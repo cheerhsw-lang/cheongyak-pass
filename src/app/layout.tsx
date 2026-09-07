@@ -1,3 +1,4 @@
+import { PwaBoot } from "@/components/InstallBar";
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
@@ -34,12 +35,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
         />
         <link rel="manifest" href="/manifest.webmanifest" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-title" content="청약패스" />
+        <link rel="apple-touch-icon" href="/icon.svg" />
       </head>
       <body>
         <a className="skip-link" href="#main">
           본문으로 건너뛰기
         </a>
         {children}
+        <PwaBoot />
       </body>
     </html>
   );
