@@ -36,14 +36,14 @@ export function Stepper({
       <div className="mt-3 flex items-center gap-2">
         <button
           type="button"
-          className="touch rounded-2xl border border-[var(--line)] bg-white px-5 text-2xl font-bold"
+          className="touch btn-quiet rounded-2xl px-5 text-2xl font-bold"
           aria-label={`${label} 줄이기`}
           onClick={() => onChange(Math.max(min, +(value - step).toFixed(4)))}
         >
           −
         </button>
         <input
-          className="h-3 w-full accent-[var(--brass)]"
+          className="h-3 w-full accent-[var(--navy)]"
           type="range"
           min={min}
           max={max}
@@ -54,7 +54,7 @@ export function Stepper({
         />
         <button
           type="button"
-          className="touch rounded-2xl border border-[var(--line)] bg-white px-5 text-2xl font-bold"
+          className="touch btn-quiet rounded-2xl px-5 text-2xl font-bold"
           aria-label={`${label} 늘리기`}
           onClick={() => onChange(Math.min(max, +(value + step).toFixed(4)))}
         >
@@ -89,12 +89,12 @@ export function ChoiceGroup<T extends string>({
             <button
               key={opt.value}
               type="button"
-              className={`touch rounded-2xl border px-4 py-3 text-left ${on ? "border-[var(--ink)] bg-[var(--ink)] text-white" : "border-[var(--line)] bg-white"}`}
+              className={`touch rounded-2xl border px-3 py-2.5 text-left sm:px-4 sm:py-3 ${on ? "btn-fill" : "btn-quiet"}`}
               onClick={() => onChange(opt.value)}
               aria-pressed={on}
             >
               <span className="block font-bold">{opt.label}</span>
-              {opt.desc ? <span className={`block text-sm ${on ? "text-white/80" : "text-[var(--muted)]"}`}>{opt.desc}</span> : null}
+              {opt.desc ? <span className={`block text-sm ${on ? "text-[var(--ivory)]/90" : "text-[var(--muted)]"}`}>{opt.desc}</span> : null}
             </button>
           );
         })}

@@ -9,13 +9,13 @@ export function ScorePanel({ scores }: { scores: ScoreBreakdown }) {
   const r = 54;
   const c = 2 * Math.PI * r;
   const dash = (pct / 100) * c;
-  const color = tone === "high" ? "#1d6a4a" : tone === "good" ? "#1e3a5f" : tone === "mid" ? "#8d6230" : "#b13228";
+  const color = tone === "high" ? "#2c6b5a" : tone === "good" ? "#1b3f6e" : tone === "mid" ? "#c4a05a" : "#b13228";
 
   return (
     <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-start">
       <div className="relative">
         <svg width="160" height="160" viewBox="0 0 140 140" aria-hidden>
-          <circle cx="70" cy="70" r={r} fill="none" stroke="#e7ddce" strokeWidth="12" />
+          <circle cx="70" cy="70" r={r} fill="none" stroke="#e7eef6" strokeWidth="12" />
           <circle
             cx="70"
             cy="70"
@@ -56,8 +56,8 @@ function ScoreRow({ label, max, value, extra }: { label: string; max: number; va
           {value} / {max}
         </span>
       </div>
-      <div className="mt-1 h-3 overflow-hidden rounded-full bg-[#efe6d8]">
-        <div className="h-full rounded-full bg-[var(--ink)]" style={{ width: `${(value / max) * 100}%` }} />
+      <div className="mt-1 h-3 overflow-hidden rounded-full bg-[var(--tint)]">
+        <div className="h-full rounded-full bg-[var(--navy)]" style={{ width: `${(value / max) * 100}%` }} />
       </div>
       {extra ? <p className="mt-1 text-sm text-[var(--muted)]">{extra}</p> : null}
     </li>

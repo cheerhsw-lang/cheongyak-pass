@@ -48,17 +48,17 @@ export function InstallBar({ notifyOn, onNotify }: { notifyOn: boolean; onNotify
   return (
     <div className="mt-4 flex flex-wrap gap-2 no-print">
       {installed ? (
-        <span className="touch rounded-2xl bg-[#e8f6ee] px-4 py-2 font-bold text-[var(--pine)]">홈 화면에 설치됨</span>
+        <span className="touch rounded-2xl bg-[var(--tint-navy)] px-4 py-2 font-bold text-[var(--navy)]">홈 화면에 설치됨</span>
       ) : deferred ? (
-        <button type="button" className="touch rounded-2xl bg-[var(--ink)] px-4 py-2 font-bold text-white" onClick={install}>
+        <button type="button" className="touch btn-fill rounded-2xl px-4 py-2 font-bold" onClick={install}>
           홈 화면에 설치
         </button>
       ) : (
-        <span className="touch rounded-2xl border border-[var(--line)] bg-white px-4 py-2 text-sm">
+        <span className="touch rounded-2xl border border-[var(--line)] bg-[var(--card)] px-4 py-2 text-sm text-[var(--ink)]">
           휴대폰 브라우저 메뉴에서 ‘홈 화면에 추가’를 누르면 앱처럼 열립니다.
         </span>
       )}
-      <button type="button" className={`touch rounded-2xl px-4 py-2 font-bold ${notifyOn ? "bg-[var(--navy)] text-white" : "border border-[var(--line)] bg-white"}`} onClick={toggleNotify}>
+      <button type="button" className={`touch rounded-2xl px-4 py-2 font-bold ${notifyOn ? "btn-fill" : "btn-quiet"}`} onClick={toggleNotify}>
         {notifyOn ? "접수 알림 켜짐" : "접수 알림 켜기"}
       </button>
     </div>

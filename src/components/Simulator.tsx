@@ -44,7 +44,7 @@ export function Simulator({
               <button
                 key={m}
                 type="button"
-                className={`touch rounded-2xl border text-center font-bold ${on ? "border-[var(--ink)] bg-[var(--ink)] text-white" : "border-[var(--line)] bg-white"}`}
+                className={`touch rounded-2xl border text-center text-sm font-bold sm:text-base ${on ? "btn-fill" : "btn-quiet"}`}
                 onClick={() => onMonthly(v)}
               >
                 {m}만
@@ -58,7 +58,7 @@ export function Simulator({
         <Gauge title="한 달 더 납입 후" value={after} caption={`${won(monthly)} 추가 시`} />
       </div>
       <div
-        className="rounded-2xl border border-[var(--line)] bg-[#fff7ea] p-4"
+        className="rounded-2xl border border-[var(--line)] bg-[var(--tint)] p-4"
         onWheel={(e) => {
           if (!e.ctrlKey && !e.metaKey) return;
           e.preventDefault();
@@ -78,9 +78,9 @@ export function Simulator({
         </div>
         <p className="mt-1 text-sm text-[var(--muted)]">버튼을 누르거나, 컴퓨터에서는 Ctrl+스크롤로 기간을 늘리고 줄일 수 있습니다.</p>
         <div className="relative mt-4 h-24">
-          <div className="absolute inset-x-0 top-10 h-2 rounded-full bg-[#efe6d8]" />
+          <div className="absolute inset-x-0 top-10 h-2 rounded-full bg-[var(--tint)]" />
           <div
-            className="absolute top-10 h-2 rounded-full bg-[#c9b08a]"
+            className="absolute top-10 h-2 rounded-full bg-[var(--navy)]"
             style={{ width: sim.baselineMonths === 0 ? "100%" : `${Math.min(100, (sim.targetMonths / Math.max(sim.baselineMonths, 1)) * 100)}%` }}
           />
           {ticks.map((m) => (
@@ -116,8 +116,8 @@ function Gauge({ title, value, caption }: { title: string; value: number; captio
   return (
     <div className="rounded-2xl border border-[var(--line)] bg-white p-4">
       <p className="font-bold">{title}</p>
-      <div className="mt-3 h-5 overflow-hidden rounded-full bg-[#efe6d8]">
-        <div className="h-full rounded-full bg-[var(--pine)] transition-all" style={{ width: `${Math.round(value * 100)}%` }} />
+      <div className="mt-3 h-5 overflow-hidden rounded-full bg-[var(--tint)]">
+        <div className="h-full rounded-full bg-[var(--navy)] transition-all" style={{ width: `${Math.round(value * 100)}%` }} />
       </div>
       <p className="mt-2 text-sm text-[var(--muted)]">{caption}</p>
     </div>

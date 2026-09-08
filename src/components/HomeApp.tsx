@@ -162,8 +162,8 @@ export function HomeApp() {
     <>
       <Header fontScale={fontScale} onFontScale={changeFont} />
       {welcome ? (
-        <div className="fixed inset-0 z-50 grid place-items-center bg-black/45 p-4">
-          <div className="card max-w-lg p-6">
+        <div className="fixed inset-0 z-50 overflow-y-auto overscroll-contain bg-[color:rgb(27_63_110_/_0.5)] px-3 py-3">
+          <div className="card mx-auto w-full max-w-lg p-5">
             <p className="kicker">바로 시작</p>
             <h2 className="mt-1 text-3xl font-black">로그인 없이, 이 기기에서만 기억합니다</h2>
             <ul className="mt-4 list-disc space-y-2 pl-5 text-[var(--muted)]">
@@ -171,74 +171,78 @@ export function HomeApp() {
               <li>입력값은 이 브라우저에만 저장되어 다음에 다시 열어도 그대로입니다.</li>
               <li>홈 화면에 설치하면 앱처럼 쓸 수 있습니다. 정부·청약홈 공식 앱이 아닙니다.</li>
             </ul>
-            <button type="button" className="touch mt-6 w-full rounded-2xl bg-[var(--ink)] text-lg font-bold text-white" onClick={finishWelcome}>
+            <button type="button" className="touch btn-fill mt-6 w-full rounded-2xl text-lg font-bold" onClick={finishWelcome}>
               세 가지만 먼저 답하기
             </button>
           </div>
         </div>
       ) : null}
       {!welcome && wizard < 99 ? (
-        <div className="fixed inset-0 z-50 grid place-items-center bg-black/45 p-4">
-          <div className="card max-w-lg w-full p-6">
-            <p className="kicker">빠른 설정 {wizard}/3</p>
-            {wizard === 1 ? (
-              <ChoiceGroup
-                label="지금 주택이 있나요?"
-                value={profile.smallCheapOnly ? "cheap" : profile.hasHouse ? "yes" : "no"}
-                options={[
-                  { value: "no", label: "무주택", desc: "세대 무주택은 공고문 기준" },
-                  { value: "cheap", label: "소형·저가 1호만", desc: "무주택 기간 인정 예외 참고" },
-                  { value: "yes", label: "그 외 유주택", desc: "무주택 가점 0점" },
-                ]}
-                onChange={(v) => {
-                  if (v === "cheap") patch({ hasHouse: true, smallCheapOnly: true });
-                  else if (v === "yes") patch({ hasHouse: true, smallCheapOnly: false });
-                  else patch({ hasHouse: false, smallCheapOnly: false });
-                }}
-              />
-            ) : null}
-            {wizard === 2 ? (
-              <>
-                <Stepper label="만 나이" value={profile.age} min={19} max={90} suffix="세" onChange={(age) => patch({ age })} />
-                <div className="mt-4">
-                  <ChoiceGroup
-                    label="혼인"
-                    value={profile.married ? "yes" : "no"}
-                    options={[
-                      { value: "yes", label: "혼인" },
-                      { value: "no", label: "미혼" },
-                    ]}
-                    onChange={(v) => patch({ married: v === "yes" })}
-                  />
-                </div>
-              </>
-            ) : null}
-            {wizard === 3 ? (
-              <>
-                <label className="font-bold" htmlFor="wizAcc">
-                  청약통장 가입기간
-                </label>
-                <select id="wizAcc" className="touch mt-2 w-full rounded-2xl border border-[var(--line)] bg-white px-4" value={profile.accountYears} onChange={(e) => patch({ accountYears: Number(e.target.value) })}>
-                  {ACCOUNT_OPTIONS.map((o) => (
-                    <option key={o.value} value={o.value}>
-                      {o.label}
-                    </option>
-                  ))}
-                </select>
-                <div className="mt-4">
-                  <ChoiceGroup label="청약하려는 지역 규제 (참고)" value={profile.heatZone} options={HEAT_OPTIONS} onChange={(heatZone) => patch({ heatZone: heatZone as HeatZone })} />
-                </div>
-              </>
-            ) : null}
-            <div className="mt-6 flex gap-2">
+        <div className="fixed inset-0 z-50 flex flex-col bg-[color:rgb(27_63_110_/_0.55)]">
+          <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-3 py-3">
+            <div className="card mx-auto w-full max-w-lg p-5">
+              <p className="kicker">빠른 설정 {wizard}/3</p>
+              {wizard === 1 ? (
+                <ChoiceGroup
+                  label="지금 주택이 있나요?"
+                  value={profile.smallCheapOnly ? "cheap" : profile.hasHouse ? "yes" : "no"}
+                  options={[
+                    { value: "no", label: "무주택", desc: "세대 무주택은 공고문 기준" },
+                    { value: "cheap", label: "소형·저가 1호만", desc: "무주택 기간 인정 예외 참고" },
+                    { value: "yes", label: "그 외 유주택", desc: "무주택 가점 0점" },
+                  ]}
+                  onChange={(v) => {
+                    if (v === "cheap") patch({ hasHouse: true, smallCheapOnly: true });
+                    else if (v === "yes") patch({ hasHouse: true, smallCheapOnly: false });
+                    else patch({ hasHouse: false, smallCheapOnly: false });
+                  }}
+                />
+              ) : null}
+              {wizard === 2 ? (
+                <>
+                  <Stepper label="만 나이" value={profile.age} min={19} max={90} suffix="세" onChange={(age) => patch({ age })} />
+                  <div className="mt-4">
+                    <ChoiceGroup
+                      label="혼인"
+                      value={profile.married ? "yes" : "no"}
+                      options={[
+                        { value: "yes", label: "혼인" },
+                        { value: "no", label: "미혼" },
+                      ]}
+                      onChange={(v) => patch({ married: v === "yes" })}
+                    />
+                  </div>
+                </>
+              ) : null}
+              {wizard === 3 ? (
+                <>
+                  <label className="font-bold" htmlFor="wizAcc">
+                    청약통장 가입기간
+                  </label>
+                  <select id="wizAcc" className="touch mt-2 w-full rounded-2xl border border-[var(--line)] bg-white px-4" value={profile.accountYears} onChange={(e) => patch({ accountYears: Number(e.target.value) })}>
+                    {ACCOUNT_OPTIONS.map((o) => (
+                      <option key={o.value} value={o.value}>
+                        {o.label}
+                      </option>
+                    ))}
+                  </select>
+                  <div className="mt-4">
+                    <ChoiceGroup label="청약하려는 지역 규제 (참고)" value={profile.heatZone} options={HEAT_OPTIONS} onChange={(heatZone) => patch({ heatZone: heatZone as HeatZone })} />
+                  </div>
+                </>
+              ) : null}
+            </div>
+          </div>
+          <div className="shrink-0 border-t border-[var(--line)] bg-[var(--card)] px-3 py-3">
+            <div className="mx-auto flex max-w-lg gap-2">
               {wizard > 1 ? (
-                <button type="button" className="touch flex-1 rounded-2xl border border-[var(--line)] font-bold" onClick={() => setWizard((w) => w - 1)}>
+                <button type="button" className="touch btn-quiet flex-1 rounded-2xl font-bold" onClick={() => setWizard((w) => w - 1)}>
                   이전
                 </button>
               ) : null}
               <button
                 type="button"
-                className="touch flex-1 rounded-2xl bg-[var(--ink)] font-bold text-white"
+                className="touch btn-fill flex-1 rounded-2xl font-bold"
                 onClick={() => (wizard >= 3 ? finishWizard() : setWizard((w) => w + 1))}
               >
                 {wizard >= 3 ? "작전실 열기" : "다음"}
@@ -383,7 +387,7 @@ export function HomeApp() {
 
         {track === "private" ? (
           <Section kicker="결과 · 민영" title="가점과 예치">
-            <div className="rounded-3xl bg-[var(--ink)] p-6 text-[var(--paper)]">
+            <div className="rounded-3xl bg-[var(--navy)] p-6 text-[var(--ivory)]">
               <p className="text-sm opacity-80">민영 가점 (참고) · {rank.firstRankLikely ? "1순위 가능 참고" : "1순위 미충족 가능"}</p>
               <p className="num mt-1 text-5xl font-black">
                 {scores.total}
@@ -404,7 +408,7 @@ export function HomeApp() {
                 </li>
               ))}
             </ul>
-            <p className="rounded-2xl bg-[#fff7ea] p-4 font-semibold">{strategy}</p>
+            <p className="rounded-2xl bg-[var(--tint)] p-4 font-semibold">{strategy}</p>
             <p className="text-sm text-[var(--muted)]">{DISCLAIMER}</p>
           </Section>
         ) : (
@@ -451,7 +455,7 @@ export function HomeApp() {
               </select>
               {spouseResult ? (
                 <div className="grid gap-3 sm:grid-cols-2">
-                  <p className="rounded-2xl bg-[var(--ink)] p-4 text-[var(--paper)]">
+                  <p className="rounded-2xl bg-[var(--navy)] p-4 text-[var(--ivory)]">
                     본인 <strong className="num text-3xl">{scores.total}</strong>점
                     <span className="block text-sm opacity-80">{rank.firstRankLikely ? "1순위 참고 가능" : "1순위 참고 부족"}</span>
                   </p>
@@ -503,7 +507,7 @@ export function HomeApp() {
           <div className="flex flex-col gap-2 sm:flex-row">
             <input className="touch flex-1 rounded-2xl border border-[var(--line)] bg-white px-4" placeholder="단지명" value={draftTitle} onChange={(e) => setDraftTitle(e.target.value)} />
             <input className="touch rounded-2xl border border-[var(--line)] bg-white px-4" type="date" value={draftDate} onChange={(e) => setDraftDate(e.target.value)} />
-            <button type="button" className="touch rounded-2xl bg-[var(--ink)] px-5 font-bold text-white" onClick={addSchedule}>
+            <button type="button" className="touch btn-fill rounded-2xl px-5 font-bold" onClick={addSchedule}>
               저장
             </button>
           </div>
@@ -589,7 +593,7 @@ export function HomeApp() {
 
 function Flag({ ok, label }: { ok: boolean; label: string }) {
   return (
-    <li className={`rounded-2xl px-4 py-3 font-bold ${ok ? "bg-[#e8f6ee] text-[var(--pine)]" : "bg-[#f3eee6] text-[var(--muted)]"}`}>
+    <li className={`rounded-2xl px-4 py-3 font-bold ${ok ? "bg-[var(--tint-navy)] text-[var(--navy)]" : "bg-[var(--tint)] text-[var(--muted)]"}`}>
       {ok ? "해당 가능 · " : "해당 없음 · "}
       {label}
     </li>

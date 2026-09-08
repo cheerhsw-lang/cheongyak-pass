@@ -8,14 +8,14 @@ export function TrackTabs({ value, onChange }: { value: TrackMode; onChange: (v:
     <div className="grid grid-cols-2 gap-2">
       <button
         type="button"
-        className={`touch rounded-2xl px-4 py-3 font-bold ${value === "private" ? "bg-[var(--ink)] text-white" : "border border-[var(--line)] bg-white"}`}
+        className={`touch rounded-2xl px-4 py-3 font-bold ${value === "private" ? "btn-fill" : "btn-quiet"}`}
         onClick={() => onChange("private")}
       >
         민영 일반공급
       </button>
       <button
         type="button"
-        className={`touch rounded-2xl px-4 py-3 font-bold ${value === "public" ? "bg-[var(--ink)] text-white" : "border border-[var(--line)] bg-white"}`}
+        className={`touch rounded-2xl px-4 py-3 font-bold ${value === "public" ? "btn-fill" : "btn-quiet"}`}
         onClick={() => onChange("public")}
       >
         공공·국민주택
@@ -85,13 +85,13 @@ export function CommandCenter({
 export function SensitivityCard({ s }: { s: Sensitivity }) {
   return (
     <div className="grid gap-2 sm:grid-cols-3">
-      <p className="rounded-2xl bg-[#fff7ea] p-4">
+      <p className="rounded-2xl bg-[var(--tint)] p-4">
         부양가족 1명 더 인정되면 <strong className="num">+{s.plusDependent}점</strong>
       </p>
-      <p className="rounded-2xl bg-[#fff7ea] p-4">
+      <p className="rounded-2xl bg-[var(--tint-navy)] p-4">
         무주택 1년 더면 <strong className="num">+{s.plusHomelessYear}점</strong>
       </p>
-      <p className="rounded-2xl bg-[#fff7ea] p-4">
+      <p className="rounded-2xl bg-[var(--tint)] p-4">
         통장 1년 더면 <strong className="num">+{s.plusAccountYear}점</strong>
       </p>
     </div>
@@ -108,7 +108,7 @@ export function RankChecks({ rank }: { rank: RankDiagnosis }) {
   return (
     <ul className="grid gap-2 sm:grid-cols-2">
       {rows.map(([label, ok]) => (
-        <li key={label} className={`rounded-2xl px-4 py-3 font-bold ${ok ? "bg-[#e8f6ee] text-[var(--pine)]" : "bg-[#fff4f2] text-[var(--clay)]"}`}>
+        <li key={label} className={`rounded-2xl px-4 py-3 font-bold ${ok ? "bg-[var(--tint-navy)] text-[var(--navy)]" : "bg-[#fff4f2] text-[var(--clay)]"}`}>
           {ok ? "충족 · " : "부족 · "}
           {label}
         </li>

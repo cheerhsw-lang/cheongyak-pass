@@ -65,11 +65,11 @@ export function NoticeBoard({
 
   return (
     <div className="space-y-4">
-      <p className="rounded-2xl bg-[#fff7ea] p-4 text-[var(--muted)]">
+      <p className="rounded-2xl bg-[var(--tint)] p-4 text-[var(--muted)]">
         출처: 한국부동산원 주택청약정보 (공공데이터포털 OPEN API). {hint}
       </p>
       <div className="flex flex-wrap gap-2">
-        <a className="touch rounded-2xl bg-[var(--ink)] px-4 py-2 font-bold text-white" href={OFFICIAL_LINKS.applyHomeApt} target="_blank" rel="noopener noreferrer">
+        <a className="touch btn-fill rounded-2xl px-4 py-2 font-bold" href={OFFICIAL_LINKS.applyHomeApt} target="_blank" rel="noopener noreferrer">
           청약홈 APT 공고
         </a>
         <a className="touch rounded-2xl border border-[var(--line)] bg-white px-4 py-2 font-bold" href={OFFICIAL_LINKS.applyHomeRemndr} target="_blank" rel="noopener noreferrer">
@@ -95,7 +95,7 @@ export function NoticeBoard({
           />
           <button
             type="button"
-            className="touch rounded-2xl bg-[var(--navy)] px-5 font-bold text-white"
+            className="touch btn-fill rounded-2xl px-5 font-bold"
             onClick={() => load(false)}
             disabled={busy}
           >
@@ -106,7 +106,7 @@ export function NoticeBoard({
           <div className="mt-3 flex flex-wrap gap-2">
             <button
               type="button"
-              className={`touch rounded-2xl px-4 ${!remainder ? "bg-[var(--ink)] text-white" : "border border-[var(--line)] bg-white"}`}
+              className={`touch rounded-2xl px-4 font-bold ${!remainder ? "btn-fill" : "btn-quiet"}`}
               onClick={() => {
                 setRemainder(false);
                 load(false);
@@ -116,7 +116,7 @@ export function NoticeBoard({
             </button>
             <button
               type="button"
-              className={`touch rounded-2xl px-4 ${remainder ? "bg-[var(--ink)] text-white" : "border border-[var(--line)] bg-white"}`}
+              className={`touch rounded-2xl px-4 font-bold ${remainder ? "btn-fill" : "btn-quiet"}`}
               onClick={() => {
                 setRemainder(true);
                 load(true);
@@ -140,7 +140,7 @@ export function NoticeBoard({
               <button
                 key={f.id}
                 type="button"
-                className={`touch rounded-2xl px-4 ${filter === f.id ? "bg-[var(--ink)] text-white" : "border border-[var(--line)] bg-white"}`}
+                className={`touch rounded-2xl px-4 font-bold ${filter === f.id ? "btn-fill" : "btn-quiet"}`}
                 onClick={() => setFilter(f.id)}
               >
                 {f.label}
@@ -154,7 +154,7 @@ export function NoticeBoard({
               return (
                 <li key={it.id} className="rounded-2xl border border-[var(--line)] bg-white p-4">
                   <div className="flex flex-wrap items-center gap-2">
-                    <span className="rounded-full bg-[#1b1914] px-3 py-1 text-sm font-bold text-white">{badge}</span>
+                    <span className="rounded-full bg-[var(--navy)] px-3 py-1 text-sm font-bold text-[var(--ivory)]">{badge}</span>
                     {it.kind ? <span className="text-sm text-[var(--muted)]">{it.kind}</span> : null}
                   </div>
                   <h3 className="mt-2 text-xl font-extrabold">{it.name}</h3>
@@ -167,13 +167,13 @@ export function NoticeBoard({
                   </p>
                   {it.builder ? <p className="text-sm text-[var(--muted)]">시공 {it.builder}</p> : null}
                   <div className="mt-3 flex flex-wrap gap-2">
-                    <a className="touch rounded-2xl bg-[var(--ink)] px-4 py-2 text-white" href={OFFICIAL_LINKS.applyHome} target="_blank" rel="noopener noreferrer">
+                    <a className="touch btn-fill rounded-2xl px-4 py-2 font-bold" href={OFFICIAL_LINKS.applyHome} target="_blank" rel="noopener noreferrer">
                       청약홈에서 확인
                     </a>
                     {it.receiptStart ? (
                       <button
                         type="button"
-                        className="touch rounded-2xl border border-[var(--line)] px-4 py-2"
+                        className="touch btn-quiet rounded-2xl px-4 py-2"
                         onClick={() => onSaveSchedule(it.name, it.receiptStart)}
                       >
                         접수일 저장
