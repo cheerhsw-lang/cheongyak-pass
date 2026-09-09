@@ -1,4 +1,4 @@
-const CACHE = "cheongyak-pass-v2-2";
+const CACHE = "cheongyak-pass-v2-3";
 
 self.addEventListener("install", (event) => {
   event.waitUntil(

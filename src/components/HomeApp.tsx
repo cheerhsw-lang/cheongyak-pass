@@ -536,25 +536,25 @@ export function HomeApp() {
         <Section kicker="은행" title="청약통장 은행 바로가기">
           <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
             {BANKS.map((b) => (
-              <a key={b.name} className="touch rounded-2xl border border-[var(--line)] bg-white px-4 py-3" href={b.href} target="_blank" rel="noopener noreferrer">
+              <a key={b.name} className="touch btn-quiet btn-stack rounded-2xl px-4 py-3" href={b.href} target="_blank" rel="noopener noreferrer">
                 <strong className="block">{b.name}</strong>
-                <span className="text-sm text-[var(--muted)]">{b.hint}</span>
+                <span className="btn-desc text-sm">{b.hint}</span>
               </a>
             ))}
           </div>
-          <a className="inline-block font-bold underline" href={OFFICIAL_LINKS.applyHome} target="_blank" rel="noopener noreferrer">
+          <a className="touch btn-fill mt-4 rounded-2xl px-5 py-3 font-bold" href={OFFICIAL_LINKS.applyHome} target="_blank" rel="noopener noreferrer">
             청약홈 공식 조회
           </a>
         </Section>
 
         <div className="mt-8 flex flex-wrap gap-3 no-print">
-          <button type="button" className="touch rounded-2xl border border-[var(--line)] bg-white px-5 font-bold" onClick={() => window.print()}>
+          <button type="button" className="touch btn-quiet rounded-2xl px-5 font-bold" onClick={() => window.print()}>
             결과 인쇄
           </button>
-          <button type="button" className="touch rounded-2xl border border-[var(--line)] bg-white px-5 font-bold" onClick={downloadBackup}>
+          <button type="button" className="touch btn-quiet rounded-2xl px-5 font-bold" onClick={downloadBackup}>
             내 설정 파일로 저장
           </button>
-          <label className="touch rounded-2xl border border-[var(--line)] bg-white px-5 font-bold">
+          <label className="touch btn-quiet rounded-2xl px-5 font-bold">
             설정 불러오기
             <input
               type="file"

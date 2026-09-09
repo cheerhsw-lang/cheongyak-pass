@@ -94,7 +94,7 @@ export function ChoiceGroup<T extends string>({
               aria-pressed={on}
             >
               <span className="block font-bold">{opt.label}</span>
-              {opt.desc ? <span className={`block text-sm ${on ? "text-[var(--ivory)]/90" : "text-[var(--muted)]"}`}>{opt.desc}</span> : null}
+              {opt.desc ? <span className={`block text-sm ${on ? "opacity-90" : "btn-desc"}`}>{opt.desc}</span> : null}
             </button>
           );
         })}

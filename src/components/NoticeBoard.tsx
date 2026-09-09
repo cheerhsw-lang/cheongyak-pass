@@ -72,10 +72,10 @@ export function NoticeBoard({
         <a className="touch btn-fill rounded-2xl px-4 py-2 font-bold" href={OFFICIAL_LINKS.applyHomeApt} target="_blank" rel="noopener noreferrer">
           청약홈 APT 공고
         </a>
-        <a className="touch rounded-2xl border border-[var(--line)] bg-white px-4 py-2 font-bold" href={OFFICIAL_LINKS.applyHomeRemndr} target="_blank" rel="noopener noreferrer">
+        <a className="touch btn-quiet rounded-2xl px-4 py-2 font-bold" href={OFFICIAL_LINKS.applyHomeRemndr} target="_blank" rel="noopener noreferrer">
           무순위·잔여세대
         </a>
-        <a className="touch rounded-2xl border border-[var(--line)] bg-white px-4 py-2 font-bold" href={OFFICIAL_LINKS.dataSet} target="_blank" rel="noopener noreferrer">
+        <a className="touch btn-quiet rounded-2xl px-4 py-2 font-bold" href={OFFICIAL_LINKS.dataSet} target="_blank" rel="noopener noreferrer">
           공공데이터 원문
         </a>
       </div>
@@ -180,7 +180,7 @@ export function NoticeBoard({
                       </button>
                     ) : null}
                     {it.homepage ? (
-                      <a className="touch rounded-2xl border border-[var(--line)] px-4 py-2" href={it.homepage} target="_blank" rel="noopener noreferrer">
+                      <a className="touch btn-quiet rounded-2xl px-4 py-2 font-bold" href={it.homepage} target="_blank" rel="noopener noreferrer">
                         단지 홈페이지
                       </a>
                     ) : null}

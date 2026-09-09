@@ -23,7 +23,7 @@ export default function LegalPage() {
       </p>
       <p className="mt-2">
         데이터셋 원문:{" "}
-        <a className="underline" href={OFFICIAL_LINKS.dataSet} target="_blank" rel="noopener noreferrer">
+        <a className="text-link underline" href={OFFICIAL_LINKS.dataSet} target="_blank" rel="noopener noreferrer">
           공공데이터포털 한국부동산원 주택청약정보
         </a>
       </p>

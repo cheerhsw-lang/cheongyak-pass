@@ -68,10 +68,10 @@ export function Simulator({
         <div className="flex flex-wrap items-center justify-between gap-2">
           <p className="font-bold">도달 타임라인</p>
           <div className="flex gap-2">
-            <button type="button" className="touch rounded-xl border border-[var(--line)] bg-white px-3" onClick={() => setZoom((z) => Math.max(1, z - 0.5))}>
+            <button type="button" className="touch btn-quiet rounded-xl px-3 font-bold" onClick={() => setZoom((z) => Math.max(1, z - 0.5))}>
               넓게
             </button>
-            <button type="button" className="touch rounded-xl border border-[var(--line)] bg-white px-3" onClick={() => setZoom((z) => Math.min(4, z + 0.5))}>
+            <button type="button" className="touch btn-quiet rounded-xl px-3 font-bold" onClick={() => setZoom((z) => Math.min(4, z + 0.5))}>
               자세히
             </button>
           </div>

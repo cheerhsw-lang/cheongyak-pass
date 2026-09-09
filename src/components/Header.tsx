@@ -35,7 +35,7 @@ export function Header({
         <div className="ml-auto flex items-center gap-1 lg:ml-2">
           <button
             type="button"
-            className="rounded-xl border border-[var(--line)] bg-[var(--card)] px-3 py-2 text-sm font-bold text-[var(--ink)] lg:hidden"
+            className="btn-quiet rounded-xl px-3 py-2 text-sm font-bold lg:hidden"
             aria-expanded={open}
             aria-controls="site-menu"
             onClick={() => setOpen((v) => !v)}
@@ -43,7 +43,7 @@ export function Header({
             {open ? "닫기" : "메뉴"}
           </button>
           <a
-            className="btn-fill rounded-xl px-3 py-2 text-sm font-bold sm:rounded-2xl sm:px-4"
+            className="touch btn-fill rounded-xl px-3 py-2 text-sm font-bold sm:rounded-2xl sm:px-4"
             href={OFFICIAL_LINKS.applyHome}
             target="_blank"
             rel="noopener noreferrer"

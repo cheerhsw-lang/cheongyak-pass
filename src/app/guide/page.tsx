@@ -61,23 +61,23 @@ export default function GuidePage() {
       <h2 className="mt-10 text-2xl font-extrabold">확인해야 할 공식 창구</h2>
       <ul className="mt-3 list-disc space-y-2 pl-5">
         <li>
-          <a className="underline" href={OFFICIAL_LINKS.applyHome} target="_blank" rel="noopener noreferrer">
+          <a className="text-link underline" href={OFFICIAL_LINKS.applyHome} target="_blank" rel="noopener noreferrer">
             청약홈 (applyhome.co.kr)
           </a>{" "}
           — 공고·접수·당첨
         </li>
         <li>
-          <a className="underline" href={OFFICIAL_LINKS.law} target="_blank" rel="noopener noreferrer">
+          <a className="text-link underline" href={OFFICIAL_LINKS.law} target="_blank" rel="noopener noreferrer">
             국가법령정보센터 주택공급에 관한 규칙
           </a>
         </li>
         <li>
-          <a className="underline" href={OFFICIAL_LINKS.hugScore} target="_blank" rel="noopener noreferrer">
+          <a className="text-link underline" href={OFFICIAL_LINKS.hugScore} target="_blank" rel="noopener noreferrer">
             주택도시보증공사 청약가점 안내
           </a>
         </li>
         <li>
-          <a className="underline" href={OFFICIAL_LINKS.dataPortal} target="_blank" rel="noopener noreferrer">
+          <a className="text-link underline" href={OFFICIAL_LINKS.dataPortal} target="_blank" rel="noopener noreferrer">
             공공데이터포털
           </a>
         </li>
